@@ -1,3 +1,4 @@
+
 const pokemonList = [
     {
       name: "bulbasaur",
@@ -9,13 +10,14 @@ const pokemonList = [
     },
   ];
 
-export default PokemonCard;
-
 function PokemonCard() {
-    const pokemon = pokemonList[0];
+    const pokemon = pokemonList[1];
     return (
-        <p>
-            {pokemon === "pokemon.name" ? "pokemon.imgSrc" : "???"}
-        </p>
-    );
+      <figure>
+        {pokemon.imgSrc ? (<img src= {pokemon.imgSrc} alt ={pokemon.name}/> ) : (<p>???</p>)}
+        <figcaption>{pokemon.name}</figcaption>
+      </figure>
+    )
 }
+
+export default PokemonCard;
