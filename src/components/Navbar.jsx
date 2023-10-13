@@ -1,44 +1,23 @@
-function Navbar({ pokemonIndex, setPokemonIndex, pokemonLength }) {
-	/**
-	 * Fonction classique
-	 */
-	function pokeNext() {
-		setPokemonIndex(pokemonIndex + 1);
-	}
+import PropTypes from "prop-types";
 
-	/**
-	 * Fonction fléchée
-	 */
-	const pokePrev = () => {
-		setPokemonIndex(pokemonIndex - 1);
-	};
+function Navbar({ setPokemonIndex, pokemonList }) {
+
+	const pokeClick = (index) => {
+		setPokemonIndex(index)
+	}
 
 	return (
 		<div>
-			{/* Soluce 1 */}
-			{pokemonIndex > 0 ? (
-				<button onClick={pokePrev}>⬅️ Précédent</button>
-			) : (
-				""
-			)}
-			{pokemonIndex < pokemonLength ? (
-				<button onClick={pokeNext}>Suivant ➡️</button>
-			) : (
-				""
-			)}
-			{/* 
-				Soluce 2
-
-				{pokemonIndex > 0 && (
-					<button onClick={pokePrev}>⬅️ Précédent</button>
-				)}
-				{pokemonIndex < pokemonList.length - 1 && (
-					<button onClick={pokeNext}>Suivant ➡️</button>
-				)}
-			
-			*/}
+			{pokemonList.map((pokemon, index) => (
+				<button key={index} onClick={() => pokeClick(index)}>{pokemon.name}</button>
+			))}
 		</div>
 	);
 }
 
-export default Navbar;  
+Navbar.propTypes = {
+	setPokemonIndex: PropTypes.func.isRequired,
+	pokemonList: PropTypes.array.isRequired
+}
+
+export default Navbar;
