@@ -11,12 +11,11 @@ function App() {
       name: "mew",
     },
   ];
-
   return (
-    <div>
-      <PokemonCard {props.pokemonList.name}/>
-    </div>
+    <>
+      <PokemonCard pokemon={pokemonList[0]} />
+    </>
   );
 }
 
-export default App;
+export default App
