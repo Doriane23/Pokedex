@@ -1,4 +1,3 @@
-// import App from "../App";
 import PropTypes from "prop-types";
 
 function PokemonCard({ pokemon }) {

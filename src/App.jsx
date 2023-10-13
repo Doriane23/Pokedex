@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PokemonCard from "./components/PokemonCard";
+import Navbar from "./components/Navbar";
 
 function App() {
 	const [pokemonIndex, setPokemonIndex] = useState(0);
@@ -26,45 +27,14 @@ function App() {
 		},
 	];
 
-	/**
-	 * Fonction classique
-	 */
-	function pokeNext() {
-		setPokemonIndex(pokemonIndex + 1);
-	}
-
-	/**
-	 * Fonction fléchée
-	 */
-	const pokePrev = () => {
-		setPokemonIndex(pokemonIndex - 1);
-	};
-
 	return (
 		<>
+			<Navbar
+				pokemonIndex={pokemonIndex}
+				setPokemonIndex={setPokemonIndex}
+				pokemonLength={pokemonList.length - 1}
+			/>
 			<PokemonCard pokemon={pokemonList[pokemonIndex]} />
-			{/* Soluce 1 */}
-			{pokemonIndex > 0 ? (
-				<button onClick={pokePrev}>⬅️ Précédent</button>
-			) : (
-				""
-			)}
-			{pokemonIndex < pokemonList.length - 1 ? (
-				<button onClick={pokeNext}>Suivant ➡️</button>
-			) : (
-				""
-			)}
-			{/* 
-				Soluce 2
-
-				{pokemonIndex > 0 && (
-					<button onClick={pokePrev}>⬅️ Précédent</button>
-				)}
-				{pokemonIndex < pokemonList.length - 1 && (
-					<button onClick={pokeNext}>Suivant ➡️</button>
-				)}
-			
-			*/}
 		</>
 	);
 }
