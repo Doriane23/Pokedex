@@ -11,11 +11,12 @@ function App() {
       name: "mew",
     },
   ];
+  
   return (
     <>
-      <PokemonCard pokemon={pokemonList[0]} />
+      <PokemonCard pokemon={pokemonList[0]}/>
     </>
   );
 }
 
-export default App
+export default App;
