@@ -51,8 +51,7 @@ function App() {
           <button onclick={pokeNext}>Suivant</button>
         ) : (
           ""
-        )
-        }
+        )}
     </>
   );
 }
