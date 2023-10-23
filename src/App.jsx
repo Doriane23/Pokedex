@@ -1,64 +1,57 @@
-/* eslint-disable react/jsx-key */
-import { useState } from "react";
 import PokemonCard from "./components/PokemonCard";
+import "./app.css";
+import { useState } from "react";
 import NavBar from "./components/NavBar";
-
+import { useEffect } from "react";
 
 const pokemonList = [
   {
-      name: "bulbasaur",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-    },
-    {
-      name: "charmander",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-    },
-    {
-      name: "squirtle",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
-    },
-    {
-      name: "pikachu",
-      imgSrc:
-        "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-    },
-    {
-      name: "mew",
-    },
-  ];
+    name: "bulbasaur",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+  },
+  {
+    name: "charmander",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+  },
+  {
+    name: "squirtle",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+  },
+  {
+    name: "pikachu",
+    imgSrc:
+      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
+  },
+  {
+    name: "mew",
+  },
+];
 
+function App() {
 
-
-function App(){
-
-/*   const [pokemonIndex, setPokemonIndex] = useState(0); */
-
- /*  const handleClickPrevious = () => {
-    setPokemonIndex(pokemonIndex - 1)
-  }
-  const handleClickNext = () => {
-    setPokemonIndex(pokemonIndex + 1)
-  }; */
-  const [pokemonIndex, setPokemonIndex] = useState(0)
+  let [pokemon, setPokemon] = useState(pokemonList[3])
   
-  const handleClick = (index) => {
-    setPokemonIndex(index)
-  }
-  
-return (
-  <div>
-	{pokemonList.map((pokemon, index) => (
-	<NavBar pokemonName={pokemon.name} handleClick={()=> {handleClick(index)}}/>
-  ))}
-    <PokemonCard pokemon={pokemonList[pokemonIndex]}/>
-  </div>
-  
+ useEffect(
+	()=>{alert("Hello, Pokemon trainer :)")},
+	[]
 );
-
+	
+return (
+    <div>
+		<div>
+			<NavBar 
+			pokemonList={pokemonList}
+			pokemon={pokemon}
+			setPokemon={setPokemon}/>
+		</div>
+		<div>
+			<PokemonCard pokemon={pokemon}/>
+		</div>
+	</div>
+);
 }
 
-
-export default App; 
+export default App;
